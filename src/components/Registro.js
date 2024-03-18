@@ -12,7 +12,7 @@ const Registro = () => {
     try {
       axios.defaults.withCredentials = true
 
-      const response = await axios.post('http://localhost:3330/api/register', {
+      const response = await axios.post('https://api-base-qp30.onrender.com/api/register', {
         username,
         password
       });
