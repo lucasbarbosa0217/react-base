@@ -1,0 +1,3 @@
+{"level":"error","message":"Erro no servidor: TypeError: req.csrfToken is not a function"}
+{"level":"error","message":"Erro no servidor: ReferenceError: token is not defined"}
+{"level":"error","message":"Erro no servidor: Error: cookieParser(\"secret\") required for signed cookies"}
