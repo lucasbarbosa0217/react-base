@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Registro = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+    axios.defaults.withCredentials = true
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      axios.defaults.withCredentials = true
+
       const response = await axios.post('http://localhost:3330/api/register', {
-        nome,
-        email,
-        senha
+        username,
+        password
       });
       console.log('Usuário registrado com sucesso:', response.data);
       // Redirecionar ou exibir mensagem de sucesso após o registro
@@ -29,30 +30,21 @@ const Registro = () => {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="nome">Nome:</label>
+          <label htmlFor="username">Nome de Usuário:</label>
           <input
             type="text"
-            id="nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="senha">Senha:</label>
+          <label htmlFor="password">Senha:</label>
           <input
             type="password"
-            id="senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <button type="submit">Registrar</button>

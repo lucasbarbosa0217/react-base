@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Blog = () => {
+const PostarBlog = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       // Recuperando o token do localStorage
       const token = localStorage.getItem('token');
@@ -28,7 +29,7 @@ const Blog = () => {
       }
     } catch (error) {
       console.error('Erro ao postar o blog:', error);
-      setError(error.response|| 'Erro ao postar o blog');
+      setError(error.response || error || "Erro ao postar Blog");
     }
   };
 
@@ -60,4 +61,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default PostarBlog;
