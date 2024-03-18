@@ -36,7 +36,7 @@ const PostarBlog = () => {
   return (
     <div>
       <h2>Postar Blog</h2>
-      {error && <p>{error}</p>}
+      {error && <p>{Object.values(error)}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Título:</label>
