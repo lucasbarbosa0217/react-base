@@ -17,6 +17,8 @@ const Login = () => {
       const { token } = response.data;
       // Salvar o token em localStorage ou em algum outro local de armazenamento seguro
       localStorage.setItem('token', token);
+
+      document.cookie.token = token
       // Redirecionar para a página de perfil do usuário ou alguma outra página protegida
      
     } catch (error) {
