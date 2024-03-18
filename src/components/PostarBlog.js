@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import verifyToken from '../modules/verifyToken';
 
 const PostarBlog = () => {
+
+  
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
@@ -10,18 +13,23 @@ const PostarBlog = () => {
     e.preventDefault();
 
     try {
+
       // Recuperando o token do localStorage
       const token = localStorage.getItem('token');
-      axios.defaults.withCredentials = true
-
-      const response = await axios.post('http://localhost:3330/api/postBlog', {
-        title,
-        content
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token}` // Enviando o token JWT no cabeçalho de autorização
+      const isLogged =  await verifyToken()
+      console.log(isLogged)    
+      const response = await axios.post(
+        'http://localhost:3330/api/postBlog',
+        {
+          title,
+          content
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${token}` // Enviando o token JWT no cabeçalho de autorização
+          }
         }
-      });
+      );
 
       if (response.status === 201) {
         console.log('Blog postado com sucesso!');

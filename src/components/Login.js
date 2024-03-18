@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -9,23 +9,27 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        axios.defaults.withCredentials = true
+      axios.defaults.withCredentials = true;
 
       const response = await axios.post('http://localhost:3330/api/login', {
         username,
         password
       });
+
       // Se a resposta for bem-sucedida, o token de autenticação estará no corpo da resposta
       const { token } = response.data;
+      
       // Salvar o token em localStorage ou em algum outro local de armazenamento seguro
       localStorage.setItem('token', token);
 
-      //document.cookie.token = token
-      // Redirecionar para a página de perfil do usuário ou alguma outra página protegida
-     
+      // Chamar a função de sucesso de login passada como prop, se for uma função
+      if (typeof onLoginSuccess === 'function') {
+        onLoginSuccess();
+      }
+
     } catch (error) {
-        console.log(error)
-      setError(error.response.data.msg || error || "Erro login.");
+      console.error(error);
+      setError(error.response.data.msg || 'Erro de login.');
     }
   };
 
@@ -53,17 +57,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
-      {error && (
-  <div>
-    <p>Error:</p>
-    <ul>
-      {Object.values(error).map((value, index) => (
-        <li key={index}>{value}</li>
-      ))}
-    </ul>
-  </div>
-)}
-
+      {error && <p>Error: {error}</p>}
     </div>
   );
 };
