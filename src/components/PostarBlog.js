@@ -17,7 +17,7 @@ const Blog = () => {
         content
       }, {
         headers: {
-          'token': `Bearer ${token}` // Enviando o token JWT no cabeçalho de autorização
+          'Authorization': `${token}` // Enviando o token JWT no cabeçalho de autorização
         }
       });
 
