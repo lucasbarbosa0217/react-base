@@ -11,17 +11,12 @@ const Login = () => {
     try {
         axios.defaults.withCredentials = true
 
-      const response = await axios.post('http://localhost:3330/api/login', {
+      const response = await axios.post('/api/login', {
         username,
         password
       });
-      // Se a resposta for bem-sucedida, o token de autenticação estará no corpo da resposta
-      const { token } = response.data;
-      // Salvar o token em localStorage ou em algum outro local de armazenamento seguro
-      localStorage.setItem('token', token);
 
-      //document.cookie.token = token
-      // Redirecionar para a página de perfil do usuário ou alguma outra página protegida
+
      
     } catch (error) {
         console.log(error)

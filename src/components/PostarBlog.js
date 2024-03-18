@@ -11,16 +11,12 @@ const PostarBlog = () => {
 
     try {
       // Recuperando o token do localStorage
-      const token = localStorage.getItem('token');
+    
       axios.defaults.withCredentials = true
 
-      const response = await axios.post('http://localhost:3330/api/postBlog', {
+      const response = await axios.post('/api/postBlog', {
         title,
         content
-      }, {
-        headers: {
-          'Authorization': `Bearer ${token}` // Enviando o token JWT no cabeçalho de autorização
-        }
       });
 
       if (response.status === 201) {

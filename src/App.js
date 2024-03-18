@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'; // Importe o Link e Routes
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import Registro from './components/Registro';
 import Login from './components/Login';
 import PostarBlog from './components/PostarBlog';
@@ -18,6 +18,7 @@ function App() {
             </ul>
           </nav>
         </header>
+
         <Routes>
           <Route path="/registro" element={<Registro />} />
           <Route path="/login" element={<Login />} />
