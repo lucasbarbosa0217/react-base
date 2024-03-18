@@ -11,13 +11,14 @@ const Blog = () => {
     try {
       // Recuperando o token do localStorage
       const token = localStorage.getItem('token');
+      axios.defaults.withCredentials = true
 
       const response = await axios.post('http://localhost:3330/api/postBlog', {
         title,
         content
       }, {
         headers: {
-          'Authorization': `${token}` // Enviando o token JWT no cabeçalho de autorização
+          'Authorization': `Bearer ${token}` // Enviando o token JWT no cabeçalho de autorização
         }
       });
 
@@ -27,7 +28,7 @@ const Blog = () => {
       }
     } catch (error) {
       console.error('Erro ao postar o blog:', error);
-      setError(error.response.data.msg || 'Erro ao postar o blog');
+      setError(error.response|| 'Erro ao postar o blog');
     }
   };
 
