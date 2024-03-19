@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+function getCookie(name) {
+  const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+  return cookieValue ? cookieValue.pop() : '';
+}
 
 const PostarBlog = () => {
   const [title, setTitle] = useState('');
@@ -8,15 +15,18 @@ const PostarBlog = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       // Recuperando o token do localStorage
-    
-      axios.defaults.withCredentials = true
+      axios.defaults.withCredentials = true;
+      const token = getCookie('_csrf');
 
       const response = await axios.post('/api/postBlog', {
         title,
         content
+      }, {
+        headers: {
+          'X-XSRF-TOKEN': token
+        }
       });
 
       if (response.status === 201) {
@@ -44,10 +54,9 @@ const PostarBlog = () => {
         </div>
         <div>
           <label htmlFor="content">Conteúdo:</label>
-          <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+          <ReactQuill 
+            value={content} 
+            onChange={setContent} 
           />
         </div>
         <button type="submit">Postar</button>
