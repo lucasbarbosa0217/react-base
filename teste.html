@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stacking Cards Effect</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 998;
+  }
+
+  .content {
+    background-color: blue;
+    height: 200vh;
+    padding: 20px;
+    color: white;
+    position: relative;
+    z-index: 999; /* Garante que o conteúdo cubra a barra de cabeçalho */
+    margin-top: -50px; /* Ajuste necessário para compensar a barra de cabeçalho */
+  }
+
+  /* Estilo apenas para ilustração */
+  p {
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Meu Cabeçalho</h1>
+  <p>Este é um exemplo de efeito de empilhamento de cartões.</p>
+</div>
+
+<div class="content">
+  <h2>Conteúdo da Página</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+  <p>Lorem ipsum dolor sit amet,asdasd consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+  <!-- Adicione mais conteúdo conforme necessário -->
+</div>
+</body>
+</html>

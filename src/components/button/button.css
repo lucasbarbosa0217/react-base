@@ -1,0 +1,9 @@
+.buttoncomponent{
+    padding:8px 24px;
+    border-radius:16px;
+    border:none;
+    background-color:var(--tint-color);
+    color: var(--tint-text-color);
+    font-size:1.2rem;
+    width:100%;
+}

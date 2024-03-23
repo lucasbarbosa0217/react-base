@@ -40,7 +40,7 @@ const PostarBlog = () => {
   };
 
   return (
-    <div>
+    <div className='page'>
       <h2>Postar Blog</h2>
       <form onSubmit={handleSubmit}>
         <div>

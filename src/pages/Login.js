@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Title from '../components/title/title';
+import "../components/container/container.css"
+
+import "./Login.css"
+import Button from '../components/button/button';
+import { ReactComponent as MySvg } from '../svg/1.svg';
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -25,11 +32,13 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className='containerDivided page'>
+      <div className='containerDividedFirst orderChange login'>
+      <Title className="title">Login</Title>
+      
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+        <div className='inputgroup'>
+          <label htmlFor="username">Nome de usuário:</label>
           <input
             type="text"
             id="username"
@@ -37,8 +46,8 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className='inputgroup'>
+          <label htmlFor="password">Senha:</label>
           <input
             type="password"
             id="password"
@@ -46,20 +55,16 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <Button>Entrar</Button>
       </form>
-      {error && (
-  <div>
-    <p>Error:</p>
-    <ul>
-      {Object.values(error).map((value, index) => (
-        <li key={index}>{value}</li>
-      ))}
-    </ul>
-  </div>
-)}
+      </div>
+      <div className='containerDividedSecond image'>
+      <MySvg className='svg'/>
 
+      </div>
+      
     </div>
+    
   );
 };
 

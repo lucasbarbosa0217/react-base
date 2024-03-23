@@ -1,0 +1,17 @@
+.footercomponent{
+    width:100%;
+    padding:8px;
+    font-size:0.8rem;
+    display:flex;
+    justify-content:center;
+    gap:0.3rem;
+    background-color : var(--tint-color);
+    color:white;
+    text-align:center;
+    margin-top: 16px;
+}
+
+.footercomponent a{
+    color:white;
+}
+
